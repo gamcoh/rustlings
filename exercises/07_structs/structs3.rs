@@ -7,8 +7,6 @@
 // Execute `rustlings hint structs3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 #[derive(Debug)]
 struct Package {
     sender_country: String,
@@ -23,7 +21,7 @@ impl Package {
             // but we will learn about error handling later.
             panic!("Can not ship a package with weight below 10 grams.")
         } else {
-            Package {
+            Self {
                 sender_country,
                 recipient_country,
                 weight_in_grams,
@@ -31,12 +29,12 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
-        // Something goes here...
+    fn is_international(&self) -> bool {
+        self.sender_country != self.recipient_country
     }
 
-    fn get_fees(&self, cents_per_gram: u32) -> ??? {
-        // Something goes here...
+    fn get_fees(&self, cents_per_gram: u32) -> u32 {
+        cents_per_gram * self.weight_in_grams
     }
 }
 
